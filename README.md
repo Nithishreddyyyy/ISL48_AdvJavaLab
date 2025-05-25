@@ -183,4 +183,4 @@ This repository contains solutions to all lab experiments for **ISL48 – Advanc
 ---
 👨‍💻 Author
 Nithish Mahesh
-B.E. CSE - Ramaiah Institute of Technology
+B.E. ISE - Ramaiah Institute of Technology
