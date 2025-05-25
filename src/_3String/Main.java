@@ -1,4 +1,4 @@
-package LabPrac._3String;
+package _3String;
 import java.util.Scanner;
 import LabPrac._3String.StringOperations.*;
 public class Main {

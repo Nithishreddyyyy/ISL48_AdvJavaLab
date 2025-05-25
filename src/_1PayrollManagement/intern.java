@@ -1,4 +1,4 @@
-package LabPrac._1PayrollManagement;
+package _1PayrollManagement;
 
 public class intern extends Employee implements payable{
     public intern(String name , String designation , double Stipend, int age){

@@ -1,4 +1,4 @@
-package LabPrac._2Queue;
+package _2Queue;
 
 public class QueueUnderFlowException extends RuntimeException {
     public QueueUnderFlowException(String message) {

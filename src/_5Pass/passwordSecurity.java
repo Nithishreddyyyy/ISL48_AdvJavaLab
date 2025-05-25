@@ -1,4 +1,4 @@
-package LabPrac._5Pass;
+package _5Pass;
 
 import java.util.Scanner;
 

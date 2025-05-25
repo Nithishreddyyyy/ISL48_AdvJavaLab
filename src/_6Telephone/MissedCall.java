@@ -1,4 +1,4 @@
-package LabPrac._6Telephone;
+package _6Telephone;
 import java.lang.*;
 import java.time.*;
 

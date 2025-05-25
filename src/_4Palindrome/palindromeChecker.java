@@ -1,4 +1,4 @@
-package LabPrac._4Palindrome;
+package _4Palindrome;
 
 import java.util.Scanner;
 

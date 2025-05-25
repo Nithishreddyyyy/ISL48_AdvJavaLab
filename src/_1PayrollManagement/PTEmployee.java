@@ -1,4 +1,4 @@
-package LabPrac._1PayrollManagement;
+package _1PayrollManagement;
 
 public class PTEmployee extends Employee implements payable{
     int hoursWorked;

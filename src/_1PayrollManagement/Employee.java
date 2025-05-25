@@ -1,4 +1,4 @@
-package LabPrac._1PayrollManagement;
+package _1PayrollManagement;
 
 public class Employee {
     String name,designation;

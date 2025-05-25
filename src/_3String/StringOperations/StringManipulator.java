@@ -1,4 +1,4 @@
-package LabPrac._3String.StringOperations;
+package _3String.StringOperations;
 
 public interface StringManipulator {
     String revString(String str);

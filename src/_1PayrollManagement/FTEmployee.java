@@ -1,4 +1,4 @@
-package LabPrac._1PayrollManagement;
+package _1PayrollManagement;
 
 public class FTEmployee extends Employee implements payable{
     public FTEmployee(String name , String designation , double monthlySalary, int age){

@@ -1,4 +1,4 @@
-package LabPrac._7Book;
+package _7Book;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -12,21 +12,20 @@ public class Test {
         List<Book> bookList = new ArrayList<>();
         bookList.add(new Book(10,"Java","Nithish","PHI",1435));
         bookList.add(new Book(11,"Java","Rahul","PHI",1245));
-        bookList.add(new Book(12,"Python","Lekha","RA",14335));
+        bookList.add(new Book(12,"Python","Nova","RA",14335));
 
         System.out.println("List of All Books: ");
         for (Book bk : bookList){
             System.out.println(bk);
-            System.out.println("---------------");
         }
-        System.out.println("Meow");
+        System.out.println("---------------");
 
         List<Book> sortedByPrice = new ArrayList<>(bookList);
         sortedByPrice.sort(Comparator.comparingDouble(b -> b.price));
         for (Book bk : sortedByPrice){
             System.out.println(bk);
-            System.out.println("--------------");
         }
+        System.out.println("--------------");
 
         System.out.println("Enter an author's name to search: ");
         String searchAuthor = sc.nextLine();
@@ -35,6 +34,7 @@ public class Test {
                 System.out.println(bk);
             }
         }
+        System.out.println("--------------");
 
     }
 }

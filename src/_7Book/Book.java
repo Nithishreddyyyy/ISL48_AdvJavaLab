@@ -1,4 +1,4 @@
-package LabPrac._7Book;
+package _7Book;
 
 import java.util.*;
 public class Book {
