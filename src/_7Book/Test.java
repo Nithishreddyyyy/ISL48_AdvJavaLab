@@ -22,7 +22,7 @@ public class Test {
 
         List<Book> sortedByPrice = new ArrayList<>(bookList);
         sortedByPrice.sort(Comparator.comparingDouble(b -> b.price));
-        for (Book bk : sortedByPrice){
+        for (Book bk : sortedByPrice){git 
             System.out.println(bk);
         }
         System.out.println("--------------");
