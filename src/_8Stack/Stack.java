@@ -1,4 +1,4 @@
-package LabPrac._8Stack;
+package _8Stack;
 
 public class Stack<T>{
     private java.util.ArrayList<T> elements;
