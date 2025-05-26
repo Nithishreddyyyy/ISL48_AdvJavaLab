@@ -23,7 +23,16 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student [Name=" + name + ", USN=" + usn + ", Age=" + age + ", Address=" + address +
-                ", Category=" + category + ", CGPA=" + computeCGPA() + "]";
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", usn='" + usn + '\'' +
+                ", address='" + address + '\'' +
+                ", category='" + category + '\'' +
+                ", age=" + age +
+                ", sgpa_1=" + sgpa_1 +
+                ", sgpa_2=" + sgpa_2 +
+                ", sgpa_3=" + sgpa_3 +
+                ", sgpa_4=" + sgpa_4 +
+                '}';
     }
 }
