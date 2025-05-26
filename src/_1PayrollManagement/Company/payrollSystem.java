@@ -1,5 +1,5 @@
 package _1PayrollManagement.Company;
-import LabPrac._1PayrollManagement.*;
+import _1PayrollManagement.*;
 public class payrollSystem {
     public static void main(String[] args) {
         Employee [] emp = new Employee[3];
