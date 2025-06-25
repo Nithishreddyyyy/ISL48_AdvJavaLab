@@ -12,7 +12,7 @@ public class Test {
         bookMap.put(3,new Book(12,"Python","Nova","RA",14335));
 
         System.out.println("List of All Books: ");
-        for (Book bk : bookMap.values()){           //diff way to print
+        for (Book bk : bookMap.values()){           //Look at it
             System.out.println(bk);
         }
         System.out.println("---------------");
