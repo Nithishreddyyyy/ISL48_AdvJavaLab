@@ -19,7 +19,15 @@ public class palindromeChecker {
         String reversed = str.reverse().toString();
         return original.equalsIgnoreCase(reversed);
     }
-
+    public boolean alphaChecker(StringBuffer str){
+        for (int i = 0 ; i < str.length() ; i++){
+            char ch = str.charAt(i);
+            if (!Character.isLetter(ch)){
+                return false;
+            }
+        }
+        return true;
+    }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         palindromeChecker obj = new palindromeChecker();
@@ -28,8 +36,9 @@ public class palindromeChecker {
         StringBuffer str = new StringBuffer(str1);
 
         try{
-            if(!str1.matches("[a-zA-Z]+")){
-                throw new InvalidInputException("Input contains non alpha char");
+            if(!obj.alphaChecker(str)){
+                throw new InvalidInputException("String is not a valid palindrome");
+
             }
             if(str.length()>5){
                 throw new LongStringException("Input string is too long");
