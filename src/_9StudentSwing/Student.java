@@ -1,4 +1,4 @@
-package _9Swing;
+package _9StudentSwing;
 
 public class Student {
     public String name, usn, address, category;
