@@ -1,4 +1,4 @@
-package _9Swing;
+package _9StudentSwing;
 
 import java.util.*;
 import java.awt.*;
@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.event.*;
 
 public class Student_Management implements ActionListener {
-    ArrayList<Student> arr = new ArrayList<Student>();
+    ArrayList<Student> arr = new ArrayList<>();
     static JFrame frm, frm1;
 
     JLabel name1, age1, addr1, usn1, category1, details, sgp1, sgp2, sgp3, sgp4, cgp1;
