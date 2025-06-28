@@ -13,11 +13,11 @@ class Manager {
         Scanner sc = new Scanner(System.in);
 
         while (true) {
-            System.out.println("\nEnter a choice: ");
             System.out.println("1. Add Missed Call");
             System.out.println("2. List and Delete Missed Calls");
             System.out.println("3. Displaying Contacts");
             System.out.println("4. Exit");
+            System.out.println("\nEnter a choice: ");
 
             int choice = sc.nextInt();
             sc.nextLine(); // consume leftover newline
