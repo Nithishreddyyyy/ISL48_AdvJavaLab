@@ -113,14 +113,17 @@ public class Shop_Management implements ActionListener {
                 return;
             }
 
-            Optional<Item> match = itemList.stream().filter(i -> i.id.equals(id)).findFirst();
-            if (match.isEmpty()) {
+            Item item = itemList.stream()
+                    .filter(i -> i.id.equals(id))
+                    .findFirst()
+                    .orElse(null);
+
+            if (item == null) {
                 JOptionPane.showMessageDialog(null, "Item ID not found!");
                 return;
+            }else{
+                itemNameField.setText(item.name);
             }
-
-            Item item = match.get();
-            itemNameField.setText(item.name);
 
             String[] discounts = {"5", "10", "15"};
             int selected = JOptionPane.showOptionDialog(
