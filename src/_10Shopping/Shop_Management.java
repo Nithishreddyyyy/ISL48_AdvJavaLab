@@ -163,14 +163,3 @@ public class Shop_Management implements ActionListener {
         new Shop_Management();
     }
 }
-
-class Item {
-    String name, id;
-    double price;
-
-    public Item(String name, String id, double price) {
-        this.name = name;
-        this.id = id;
-        this.price = price;
-    }
-}
