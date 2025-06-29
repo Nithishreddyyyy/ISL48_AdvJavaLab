@@ -1,22 +1,23 @@
 package _6Telephone;
 
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
+
 class Manager {
     public static void main(String[] args) {
-        ArrayList<Contact> cl = new ArrayList<>();
+        List<Contact> cl = new LinkedList<>();
         cl.add(new Contact("name1", 9380467390L));
         cl.add(new Contact("name2", 9591895619L));
 
-        ArrayList<MissedCall> mc = new ArrayList<>();
+        List<MissedCall> mc = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
 
         while (true) {
-            System.out.println("\nEnter a choice: ");
             System.out.println("1. Add Missed Call");
             System.out.println("2. List and Delete Missed Calls");
-            System.out.println("3. Exit");
+            System.out.println("3. Displaying Contacts");
+            System.out.println("4. Exit");
+            System.out.println("\nEnter a choice: ");
 
             int choice = sc.nextInt();
             sc.nextLine(); // consume leftover newline
@@ -34,7 +35,7 @@ class Manager {
                         }
                     }
 
-                    if (mc.size() >= 3) {
+                    if (mc.size() >= 5) {
                         MissedCall removed = mc.remove(0);
                         System.out.println("Removed oldest missed call: " + removed);
                     }
@@ -56,10 +57,15 @@ class Manager {
                     break;
 
                 case 3:
+                    System.out.println("Displaying contacts...");
+                    for (Contact c : cl) {
+                        System.out.println("Name: " + c.name + " \tNumber: " + c.number);
+                    }
+                    break;
+                case 4:
                     System.out.println("Exiting...");
                     sc.close();
                     return;
-
                 default:
                     System.out.println("Invalid choice. Try again.");
             }

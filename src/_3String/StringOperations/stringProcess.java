@@ -19,9 +19,6 @@ public class stringProcess implements StringManipulator{
     public String upperString(String str){
         return str.toUpperCase();
     }
-    public String lowerString(String str){
-        return str.toLowerCase();
-    }
     public String concatString(String str1, String str2) {
         return str1.concat(str2);
     }

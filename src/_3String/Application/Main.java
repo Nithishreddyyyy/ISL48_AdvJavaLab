@@ -1,4 +1,4 @@
-package _3String;
+package _3String.Application;
 import java.util.Scanner;
 import _3String.StringOperations.*;
 public class Main {
@@ -14,7 +14,6 @@ public class Main {
         System.out.println("Original String: " + s);
         System.out.println("Reveresed: "+str.revString(s));
         System.out.println("Upper: "+str.upperString(s));
-        System.out.println("Lower: "+str.lowerString(s));
         System.out.println("Concat of two strings: "+str.concatString(s,str2));
         System.out.println("CountVowels: "+str.countVowels(s));
         System.out.println("Palindrome or not: "+str.isPali(s));

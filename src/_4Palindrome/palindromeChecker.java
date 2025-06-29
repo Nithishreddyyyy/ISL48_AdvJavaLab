@@ -7,31 +7,41 @@ class InvalidInputException extends Exception{
         super(message);
     }
 }
-class ShortStringException extends Exception{
-    public ShortStringException(String message){
+class LongStringException extends Exception{
+    public LongStringException(String message){
         super(message);
     }
 
 }
 public class palindromeChecker {
-    public  boolean isPalindrome(String str){
-        String lowerInput = str.toLowerCase();
-        String reversedInput = new StringBuffer(lowerInput).reverse().toString();
-        return lowerInput.equals(reversedInput);
+    public  boolean isPalindrome(StringBuffer str){
+        String original = str.toString();
+        String reversed = str.reverse().toString();
+        return original.equalsIgnoreCase(reversed);
     }
-
+    public boolean alphaChecker(StringBuffer str){
+        for (int i = 0 ; i < str.length() ; i++){
+            char ch = str.charAt(i);
+            if (!Character.isLetter(ch)){
+                return false;
+            }
+        }
+        return true;
+    }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         palindromeChecker obj = new palindromeChecker();
         System.out.println("Enter a string: ");
-        String str = sc.nextLine();
+        String str1 = sc.nextLine();
+        StringBuffer str = new StringBuffer(str1);
 
         try{
-            if(!str.matches("[a-zA-Z]+")){
-                throw new InvalidInputException("Input contains non alpha char");
+            if(!obj.alphaChecker(str)){
+                throw new InvalidInputException("String is not a valid palindrome");
+
             }
-            if(str.length()<3){
-                throw new ShortStringException("Input string is too short");
+            if(str.length()>5){
+                throw new LongStringException("Input string is too long");
             }
             if(obj.isPalindrome(str)){
                 System.out.println("Palindrome");
@@ -39,7 +49,7 @@ public class palindromeChecker {
             else{
                 System.out.println("Not a palindrome");
             }
-        }catch(InvalidInputException | ShortStringException e){
+        }catch(InvalidInputException | LongStringException e){
             System.out.println(e.getMessage());
         }
 
