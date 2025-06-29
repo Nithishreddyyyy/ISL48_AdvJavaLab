@@ -1,9 +1,6 @@
 package _7Book;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Test {
     public static void main(String[] args) {
@@ -22,8 +19,12 @@ public class Test {
 
         List<Book> sortedByPrice = new ArrayList<>(bookList);
         sortedByPrice.sort(Comparator.comparingDouble(b -> b.price));
-        for (Book bk : sortedByPrice){
-            System.out.println(bk);
+//        for (Book bk : sortedByPrice){
+//            System.out.println(bk);
+//        }
+        Iterator<Book> it = sortedByPrice.iterator();
+        while(it.hasNext()){
+            System.out.println(it.next());
         }
         System.out.println("--------------");
 

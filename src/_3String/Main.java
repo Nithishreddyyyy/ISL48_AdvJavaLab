@@ -1,6 +1,6 @@
 package _3String;
 import java.util.Scanner;
-import LabPrac._3String.StringOperations.*;
+import _3String.StringOperations.*;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
