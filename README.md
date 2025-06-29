@@ -1,6 +1,6 @@
 # ISL48 Advanced Java Lab 🚀
 
-This repository contains solutions to all lab experiments for **ISL48 – Advanced Java Laboratory**. Each program demonstrates core Java concepts like interfaces, packages, GUI development, exception handling, collections, generics, and more.
+This repository contains solutions to all lab experiments for **ISL48 – Advanced Java Laboratory**. Each program demonstrates core Java concepts like interfaces, packages, GUI development, exception handling, collections, generics, JDBC, Swing, and JSP-based web applications.
 
 ---
 
@@ -13,16 +13,19 @@ This repository contains solutions to all lab experiments for **ISL48 – Advanc
 📌 **Question:**
 
 > Write a Java Program for the following Payroll System. Create a package called `PayrollManagement`. Define an interface `Payable` with a method `calculate()`.  
-> Create a super class called `Employee` with the following data members: name, age, salary and designation. Use a parameterised constructor to initialize all the data members.  
-> The Employee class is inherited in three sub-classes: `FullTime`, `PartTime`, and `Intern`, which implement the `Payable` interface. Full-Time Employee receives monthly salary, Part-Time Employee receives hourly wages, Intern takes a fixed stipend.  
-> Create another package `Company` and import these classes to complete the payroll system. Create an array of Employee objects.
+> Create a superclass called `Employee` with data members: name, age, salary, and designation. Use a parameterized constructor to initialize them.  
+> The `Employee` class is inherited by `FullTime`, `PartTime`, and `Intern`, all implementing `Payable`.  
+> - FullTime: Monthly salary  
+> - PartTime: Hourly wages  
+> - Intern: Fixed stipend  
+> Create another package `Company` and import these classes.  
+> Store all employees in an `ArrayList<Employee>`.
 
 🔧 **Highlights:**
 - Packages: `PayrollManagement`, `Company`
-- OOP: Inheritance, Interface (`Payable`), Polymorphism
-- Employee types: FullTime, PartTime, Intern
-- Salary calculated differently based on type
-- Uses `Employee[]` array
+- Inheritance + Interface
+- Polymorphism in salary calculation
+- Dynamic data storage with `ArrayList`
 
 ---
 
@@ -30,35 +33,36 @@ This repository contains solutions to all lab experiments for **ISL48 – Advanc
 
 📌 **Question:**
 
-> Create a `Queue` class and implement `enqueue`, `dequeue` and `display` operations.  
-> Create Custom Exceptions to handle **Queue Overflow** and **Queue Underflow**.
+> Create a `Queue` class to store `String` names and implement `enqueue`, `dequeue`, and `display`.  
+> Use **Custom Exceptions**:
+> - `QueueOverflowException`
+> - `QueueUnderflowException`
 
 🔧 **Highlights:**
 - Data structure: Queue
-- Methods: `enqueue()`, `dequeue()`, `display()`
-- Custom exceptions: `QueueOverflowException`, `QueueUnderflowException`
-- Demonstrates exception handling in DS
+- Custom exception handling
+- Queue behavior simulation using arrays or lists
 
 ---
 
-### ✅ 3. String Operations using Interfaces and Packages
+### ✅ 3. String Operations using Interface and Packages
 
 📌 **Question:**
 
-> Define a package named `stringoperations` to encapsulate string processing functionality.  
-> Create an interface `StringManipulator` with methods:
-> - `reverse()`, `toUpperCase()`, `toLowerCase()`, `concatenate()`, `countVowels()`, `wordCount()`  
-    > Implement this in `StringProcessor` class.  
-    > Create a `main` class in another package `application` that:
-> - Creates an object of `StringProcessor`
-> - Accepts user input
-> - Tests and displays output of all methods
+> Define a package `stringoperations` and an interface `StringManipulator` with methods:
+> - `reverse(String input)`
+> - `toUpperCase(String input)`
+> - `concatenate(String str1, String str2)`
+> - `countVowels(String input)`
+> - `wordCount(String input)`  
+> Implement in `StringProcessor`.  
+> Create a main class in `application` package that takes input from user and tests all methods.
 
 🔧 **Highlights:**
-- Interface-based design: `StringManipulator`
-- String operations (6+ methods)
-- Organized into two packages: `stringoperations`, `application`
-- Clean input/output handling
+- Interface-based design
+- Two-package separation
+- String operations and metrics
+- Modular, testable design
 
 ---
 
@@ -66,19 +70,18 @@ This repository contains solutions to all lab experiments for **ISL48 – Advanc
 
 📌 **Question:**
 
-> Create a Palindrome Checker using `StringBuffer`.
-> - Throw `InvalidInputException` if input has non-alphabetical characters.
-> - Throw `ShortStringException` if string length < 3.
-> - If palindrome (case-insensitive), display success message.
-> - Otherwise, display failure message.
+> Create a palindrome checker using `StringBuffer`.  
+> Implement exception handling:
+> - `InvalidInputException`: if input has special characters  
+> - `LongStringException`: if string length > 5  
+> - Ignore case while checking  
+> Show appropriate messages.
 
 🔧 **Highlights:**
-- Uses `StringBuffer` for reverse
-- Custom exceptions:
-    - `InvalidInputException`
-    - `ShortStringException`
-- Validates input strictly
-- Checks palindromes ignoring case
+- Exception handling
+- String reversal using `StringBuffer`
+- Clean validations
+- Case-insensitive palindrome check
 
 ---
 
@@ -86,19 +89,18 @@ This repository contains solutions to all lab experiments for **ISL48 – Advanc
 
 📌 **Question:**
 
-> Create a Password Security Application in Java that takes a user's password and performs:
-> - Checks for uppercase, lowercase, and digit
-> - Counts special characters
-> - Masks password (except 1st and last char)
-> - Reverses password
-> - Appends a security token (e.g., `@123!`)
-> - Replaces vowels with `#`
+> Create a Java app that performs password validation:
+> - Check for uppercase, lowercase, digit  
+> - Count special and non-special characters  
+> - Mask the password (show only first and last chars)  
+> - Reverse password  
+> - Append a security token (e.g., `@123!`)  
+> - Replace vowels with `#`
 
 🔧 **Highlights:**
-- Security checks using regex
-- Encryption-like masking
-- Vowel obfuscation
-- Demonstrates string manipulations and validations
+- Regex-based checks
+- Password transformations
+- Encryption-style manipulation
 
 ---
 
@@ -106,81 +108,135 @@ This repository contains solutions to all lab experiments for **ISL48 – Advanc
 
 📌 **Question:**
 
-> Simulate a telephone missed call log. Store:
-> - Time of call, number, and caller name
-> - Name = "Private Caller" if not listed  
-    > Use a collection with:
-> - Max 3 calls (FIFO)
-> - On new call, drop oldest
-> - After each call, let user:
-    >   - Delete it or not
->   - View details  
-      > Finally, show full list of missed calls.
+> Maintain a **LinkedList** of contact details (name, number).  
+> For each incoming call:
+> - Store time, number, and name (or "Private Caller") in an `ArrayList`.  
+> - Max 5 calls: remove oldest if exceeded.  
+> For each call:
+> - Let user delete or view it  
+> - Options to view contact list and missed call list
 
 🔧 **Highlights:**
-- Uses `LinkedList` or `Queue` for FIFO
-- Call limit of 3
-- Dynamic deletion and viewing
-- `IncomingCall` helper class
+- `LinkedList` + `ArrayList`
+- Max queue size: 5
+- Contact lookup logic
+- User-driven deletion/viewing
 
 ---
 
-### ✅ 7. Book Database with Collections and Sorting
+### ✅ 7. Book Database with HashMap and Sorting
 
 📌 **Question:**
 
-> Create a `Book` class with: title, author, publisher, price.  
-> Store in a List.
-> - Sort books by price (ascending)
-> - Search books by author name
+> Create a `Book` class with: title, author, publisher, price, and a unique book ID.  
+> Store books in a `HashMap`.  
+> - Sort books by price → new List  
+> - Search by author  
 > - Filter books above a user-specified price
-> - Maintain book ID uniquely
 
 🔧 **Highlights:**
-- Uses `ArrayList` and sorting
-- `Comparator` or `Comparable` implementation
-- Search and filter logic
-- Good use of Java Collections API
+- Uses `HashMap` and `ArrayList`
+- `Comparable` / `Comparator`
+- Multiple filters and views
+- Unique ID maintenance
 
 ---
 
-### ✅ 8. Generic Stack Class
+### ✅ 8. Generic Stack using ArrayList
 
 📌 **Question:**
 
-> Write a program to create a generic `Stack<T>` class with:
+> Create a generic class `Stack<T>` with:
 > - `push()`, `pop()`, `clear()`, `isEmpty()`, `display()`  
-    > Demonstrate with `Integer` and `String` stacks.
+> Backed by `ArrayList`.  
+> Demonstrate with `String` and `Float`.
 
 🔧 **Highlights:**
-- Generic class using `<T>`
-- Implements classic stack behavior
-- Demonstrates type safety
-- Examples with two different data types
+- Java Generics
+- Type-safe stack
+- Demonstration with multiple types
+- Internal storage: `ArrayList<T>`
 
 ---
 
-### ✅ 9. Swing-based Student CGPA Application
+### ✅ 9. Student CGPA Swing Application
 
 📌 **Question:**
 
-> Create a Swing application where user enters:
-> - name, usn, age, address, sgpa (4 semesters), category  
-    > Features:
-> - Validate all fields with pop-up error messages
-> - `Compute` button calculates CGPA
-> - `Done` adds student to a collection
-> - `Complete` displays collection in a `TextArea`
-> - Enable/Disable buttons based on workflow
+> Create a Swing app for student details: name, usn, age, address, sgpas (4 sems), and category (ComboBox).  
+> - Validate fields with pop-up errors  
+> - `Compute` CGPA  
+> - `Done`: add to collection  
+> - `Complete`: display collection in `TextArea`  
+> - Control button visibility dynamically
 
 🔧 **Highlights:**
-- GUI with Java Swing
-- Form validation
-- Button action handling
-- CGPA computation
-- State management via enable/disable
+- Java Swing GUI
+- Input validation
+- Event-driven programming
+- Form state management
 
 ---
-👨‍💻 Author
-Nithish Reddy
-B.E. ISE - Ramaiah Institute of Technology
+
+### ✅ 10. Login & Purchase Validation App (Swing)
+
+📌 **Question:**
+
+> Build a Swing GUI app for login and item purchase:
+> - Validate login with dialog boxes  
+> - Handle new/existing customers  
+> - Enter item ID & quantity  
+> - Show item name and cost  
+> - Offer discount choices  
+> - `Print` button shows purchase info in dialog
+
+🔧 **Highlights:**
+- Dialog-based validation
+- Customer and item entry
+- Dynamic GUI updates
+- User interaction flow
+
+---
+
+### ✅ 11. Representative-Customer Management (Swing + JDBC)
+
+📌 **Question:**
+
+> Create a desktop app using Swing and JDBC:
+> - Create `Representative` and `Customer` tables in MySQL  
+> - Insert data via Swing forms  
+> - Display `Representative` info if `Credit_Limit` > 15,000
+
+🔧 **Highlights:**
+- JDBC integration
+- SQL table operations
+- Conditional query logic
+- Multi-form GUI
+
+---
+
+### ✅ 12. JSP Shirt Purchase Web Application
+
+📌 **Question:**
+
+> Create a JSP-based web app for shirt purchase:
+> - Show shirt types and cost (table)  
+> - Dropdown for shirt type  
+> - Radio buttons for neck type  
+> - Input quantity  
+> - `Compute` button → total cost + purchase info
+
+🔧 **Highlights:**
+- JSP front-end logic
+- Table + dropdown + radio + textbox
+- Price computation and display
+- Interactive UI
+
+---
+
+👨‍💻 **Author**  
+Nithish Reddy  
+B.E. ISE – Ramaiah Institute of Technology
+
+
+testing

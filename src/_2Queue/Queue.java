@@ -1,7 +1,7 @@
 package _2Queue;
 
 public class Queue {
-    int [] queue;
+    String [] queue;
     int cap,front,rear;
 
     public Queue(int cap){
@@ -9,28 +9,28 @@ public class Queue {
             throw new IllegalArgumentException("Queue capacity must be greater than 0");
         }
         this.cap = cap;
-        this.queue = new int[cap];
+        this.queue = new String[cap];
         this.front = 0;
         this.rear = -1;
     }
 
-    public void Enqueue(int item){
+    public void Enqueue(String item){
         if(isFull()){
             throw new QueueOverFlowException("Queue is full");
         }
         queue[++rear] = item;
-        System.out.println("enqueued" + item);
+        System.out.println("enqueued: " + item);
     }
 
     public void Dequeue(){
         if(isEmpty()){
             throw new QueueUnderFlowException("Queue is Empty");
         }
-        int item = queue[front++];
+        String item = queue[front++];
         System.out.println("dequeued" + item);
     }
 
-    public void display(){
+    public void Display(){
         if(isEmpty()){
             throw new QueueUnderFlowException("Queue is empty");
         }
@@ -53,11 +53,11 @@ public class Queue {
         Queue Q = new Queue(5);
 
         try{
-            Q.Enqueue(1);
-            Q.Enqueue(2);
-            Q.display();
+            Q.Enqueue("Hello");
+            Q.Enqueue("World");
+            Q.Display();
             Q.Dequeue();
-            Q.display();
+            Q.Display();
         }catch(Exception e){
             System.err.println("Error: " + e);
         }

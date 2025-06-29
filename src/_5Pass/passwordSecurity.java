@@ -7,7 +7,7 @@ public class passwordSecurity {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter your password: ");
         String password = sc.nextLine();
-        boolean hasUpper = false , hasLower = false , hadDigit = false ;
+        boolean hasUpper = false , hasLower = false , hasDigit = false ;
         int specialChar = 0 ;
         String masked_password = "";
 
@@ -19,18 +19,20 @@ public class passwordSecurity {
                 hasLower = true;
             }
             else if(Character.isDigit(ch)){
-                hadDigit = true;
+                hasDigit = true;
             }
             else{
                 specialChar++;
             }
         }
+        int nonSpecial = password.length() - specialChar;
 
         System.out.println("#####Pasword Security#####\n\n\n");
         System.out.println("Your password is: "+password);
         System.out.println("Password contains Upper Letters: "+hasUpper);
         System.out.println("Password contains Lower Letters: "+hasLower);
-        System.out.println("Password contains Digits: "+hadDigit);
+        System.out.println("Password contains Digits: "+hasDigit);
+        System.out.println("Number of charecters (without special characters): "+nonSpecial);
         System.out.println("Number of Special chars in Password: "+specialChar);
 
         if(password.length()<=2){

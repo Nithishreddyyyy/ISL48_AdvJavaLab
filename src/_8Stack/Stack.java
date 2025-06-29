@@ -2,7 +2,6 @@ package _8Stack;
 import java.util.*;
 public class Stack<T> {
     ArrayList<T> elements;
-
     public Stack(){
         elements = new ArrayList<>();
     }
@@ -31,9 +30,9 @@ public class Stack<T> {
 
 class Demo{
     public static void main(String[] args) {
-        Stack<Integer> intStack = new Stack<>();
-        intStack.push(1);
-        intStack.push(2);
+        Stack<Float> intStack = new Stack<>();
+        intStack.push(1.2f);
+        intStack.push(2.4f);
         intStack.display();
         intStack.pop();
         intStack.display();
