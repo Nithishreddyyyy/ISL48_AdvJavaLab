@@ -4,17 +4,8 @@ import java.util.Objects;
 
 public class stringProcess implements StringManipulator{
     public String revString(String str){
-        char [] chars = str.toCharArray();
-        int left=0,right = chars.length-1;
-        while (left < right){
-            char temp = chars[left];
-            chars [left] = chars[right];
-            chars[right] = temp;
-            left++;
-            right--;
-        }
-        String res = new String(chars);
-        return res;
+        StringBuilder sb = new StringBuilder(str);
+        return sb.reverse().toString();
     }
     public String upperString(String str){
         return str.toUpperCase();
