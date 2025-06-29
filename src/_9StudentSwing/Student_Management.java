@@ -1,129 +1,174 @@
 package _9StudentSwing;
 
-import java.util.*;
-import java.awt.*;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class Student_Management implements ActionListener {
-    ArrayList<Student> arr = new ArrayList<>();
-    static JFrame frm, frm1;
+    ArrayList<Student> students = new ArrayList<>();
 
-    JLabel name1, age1, addr1, usn1, category1, details, sgp1, sgp2, sgp3, sgp4, cgp1;
-    JTextField name, usn, address, age, sgpa1, sgpa2, sgpa3, sgpa4, category, cgp;
-    JButton compute, done, complete;
-    JTextArea jt;
+    JFrame inputFrame, displayFrame;
+    JTextField nameField, ageField, addressField, usnField;
+    JComboBox<String> categoryField;
+    JTextField sgpa1Field, sgpa2Field, sgpa3Field, sgpa4Field, cgpaField;
+    JTextArea displayArea;
+    JButton computeBtn, doneBtn, completeBtn;
+
     float cgpa;
 
     public Student_Management() {
-        frm = new JFrame("Enter details");
-        frm1 = new JFrame("Display details");
+        // Input Frame
+        inputFrame = new JFrame("Student Details Input");
+        inputFrame.setSize(400, 500);
+        inputFrame.setLayout(new GridLayout(11, 2));
+        inputFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        name1 = new JLabel("Enter name");
-        age1 = new JLabel("Enter age");
-        addr1 = new JLabel("Enter address");
-        usn1 = new JLabel("Enter usn");
-        category1 = new JLabel("Enter category");
-        details = new JLabel("Collection of Students");
+        inputFrame.add(new JLabel("Name:"));
+        nameField = new JTextField();
+        inputFrame.add(nameField);
 
-        jt = new JTextArea(100, 100);
-        name = new JTextField(20);
-        age = new JTextField(20);
-        address = new JTextField(20);
-        usn = new JTextField(20);
-        category = new JTextField(20);
+        inputFrame.add(new JLabel("Age:"));
+        ageField = new JTextField();
+        inputFrame.add(ageField);
 
-        sgp1 = new JLabel("Enter SGPA1");
-        sgpa1 = new JTextField(10);
-        sgp2 = new JLabel("Enter SGPA2");
-        sgpa2 = new JTextField(10);
-        sgp3 = new JLabel("Enter SGPA3");
-        sgpa3 = new JTextField(10);
-        sgp4 = new JLabel("Enter SGPA1");
-        sgpa4 = new JTextField(10);
+        inputFrame.add(new JLabel("Address:"));
+        addressField = new JTextField();
+        inputFrame.add(addressField);
 
-        cgp1 = new JLabel("CGPA Computed");
-        cgp = new JTextField(10);
+        inputFrame.add(new JLabel("USN:"));
+        usnField = new JTextField();
+        inputFrame.add(usnField);
 
-        compute = new JButton("Compute CGPA");
-        done = new JButton("Add to collection");
-        complete = new JButton("Place in TextArea");
+        inputFrame.add(new JLabel("SGPA 1:"));
+        sgpa1Field = new JTextField();
+        inputFrame.add(sgpa1Field);
 
-        frm.add(name1); frm.add(name);
-        frm.add(age1); frm.add(age);
-        frm.add(addr1); frm.add(address);
-        frm.add(usn1); frm.add(usn);
-        frm.add(sgp1); frm.add(sgpa1);
-        frm.add(sgp2); frm.add(sgpa2);
-        frm.add(sgp3); frm.add(sgpa3);
-        frm.add(sgp4); frm.add(sgpa4);
-        frm.add(cgp1); frm.add(cgp);
-        frm.add(category1); frm.add(category);
-        frm.add(compute); frm.add(done); frm.add(complete);
+        inputFrame.add(new JLabel("SGPA 2:"));
+        sgpa2Field = new JTextField();
+        inputFrame.add(sgpa2Field);
 
-        done.setVisible(false);
-        complete.setVisible(false);
+        inputFrame.add(new JLabel("SGPA 3:"));
+        sgpa3Field = new JTextField();
+        inputFrame.add(sgpa3Field);
 
-        frm1.add(details);
-        frm1.add(jt);
+        inputFrame.add(new JLabel("SGPA 4:"));
+        sgpa4Field = new JTextField();
+        inputFrame.add(sgpa4Field);
 
-        compute.addActionListener(this);
-        done.addActionListener(this);
-        complete.addActionListener(this);
+        inputFrame.add(new JLabel("Category:"));
+        categoryField = new JComboBox<>(new String[]{"General", "OBC", "SC", "ST"});
+        inputFrame.add(categoryField);
+
+        inputFrame.add(new JLabel("CGPA:"));
+        cgpaField = new JTextField();
+        cgpaField.setEditable(false);
+        inputFrame.add(cgpaField);
+
+        computeBtn = new JButton("Compute");
+        doneBtn = new JButton("Done");
+        completeBtn = new JButton("Complete");
+
+        inputFrame.add(computeBtn);
+        inputFrame.add(doneBtn);
+        inputFrame.add(completeBtn);
+
+        computeBtn.addActionListener(this);
+        doneBtn.addActionListener(this);
+        completeBtn.addActionListener(this);
+
+        // Initially disable "Done" button
+        doneBtn.setEnabled(false);
+
+        inputFrame.setVisible(true);
+
+        // Display Frame
+        displayFrame = new JFrame("Student Records");
+        displayFrame.setSize(400, 400);
+        displayArea = new JTextArea();
+        JScrollPane scroll = new JScrollPane(displayArea);
+        displayFrame.add(scroll);
+        displayFrame.setVisible(true);
     }
 
-    public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() == compute) {
-            float t1 = Float.parseFloat(sgpa1.getText());
-            float t2 = Float.parseFloat(sgpa2.getText());
-            float t3 = Float.parseFloat(sgpa3.getText());
-            float t4 = Float.parseFloat(sgpa4.getText());
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == computeBtn) {
+            try {
+                float s1 = Float.parseFloat(sgpa1Field.getText());
+                float s2 = Float.parseFloat(sgpa2Field.getText());
+                float s3 = Float.parseFloat(sgpa3Field.getText());
+                float s4 = Float.parseFloat(sgpa4Field.getText());
 
-            if (t1 > 10.0f || t2 > 10.0f || t3 > 10.0f || t4 > 10.0f)
-                JOptionPane.showMessageDialog(null, "Enter correct SGPA values");
-            else {
-                cgpa = (t1 + t2 + t3 + t4) / 4;
-                cgp.setText("CGPA is:" + cgpa);
+                if (s1 > 10 || s2 > 10 || s3 > 10 || s4 > 10) {
+                    JOptionPane.showMessageDialog(null, "SGPA must be <= 10");
+                    return;
+                }
+
+                cgpa = (s1 + s2 + s3 + s4) / 4;
+                cgpaField.setText(String.format("%.2f", cgpa));
+
+                computeBtn.setEnabled(false);
+                doneBtn.setEnabled(true);
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "Enter valid SGPA values.");
             }
+        } else if (e.getSource() == doneBtn) {
+            try {
+                String name = nameField.getText();
+                String ageText = ageField.getText();
+                String address = addressField.getText();
+                String usn = usnField.getText();
 
-            done.setVisible(true);
-            complete.setVisible(true);
-        }
-        else if (ae.getSource() == done) {
-            String n = name.getText();
-            String a = address.getText();
-            String u = usn.getText();
-            String c = category.getText();
+                if (name.isEmpty() || ageText.isEmpty() || address.isEmpty() || usn.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Please fill all fields.");
+                    return;
+                }
 
-            float t1 = Float.parseFloat(sgpa1.getText());
-            float t2 = Float.parseFloat(sgpa2.getText());
-            float t3 = Float.parseFloat(sgpa3.getText());
-            float t4 = Float.parseFloat(sgpa4.getText());
+                int age = Integer.parseInt(ageText);
+                if (age < 18) {
+                    JOptionPane.showMessageDialog(null, "Age must be at least 18");
+                    return;
+                }
 
-            int x = Integer.parseInt(age.getText());
+                float s1 = Float.parseFloat(sgpa1Field.getText());
+                float s2 = Float.parseFloat(sgpa2Field.getText());
+                float s3 = Float.parseFloat(sgpa3Field.getText());
+                float s4 = Float.parseFloat(sgpa4Field.getText());
 
-            if (x < 18)
-                JOptionPane.showMessageDialog(null, "Enter correct age");
-            else {
-                Student temp = new Student(n, u, x, a, t1, t2, t3, t4, c);
-                arr.add(temp);
+                String category = (String) categoryField.getSelectedItem();
+
+                Student s = new Student(name, usn, age, address, s1, s2, s3, s4, category);
+                students.add(s);
+
+                JOptionPane.showMessageDialog(null, "Student added successfully!");
+
+                // Reset fields
+                nameField.setText("");
+                ageField.setText("");
+                addressField.setText("");
+                usnField.setText("");
+                sgpa1Field.setText("");
+                sgpa2Field.setText("");
+                sgpa3Field.setText("");
+                sgpa4Field.setText("");
+                cgpaField.setText("");
+
+                doneBtn.setEnabled(false);
+                computeBtn.setEnabled(true);
+
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Please fill all fields correctly.");
             }
-        }
-        else if (ae.getSource() == complete) {
-            jt.setText("");
-            for (Student stud : arr) {
-                jt.append(stud + "\n");
+        } else if (e.getSource() == completeBtn) {
+            displayArea.setText("");
+            for (Student s : students) {
+                displayArea.append(s + "\n");
             }
         }
     }
 
     public static void main(String[] args) {
-        Student_Management obj = new Student_Management();
-        frm.setVisible(true);
-        frm.setSize(300, 400);
-        frm.setLayout(new GridLayout(6, 1));
-
-        frm1.setVisible(true);
-        frm1.setSize(300, 400);
+        new Student_Management();
     }
 }
