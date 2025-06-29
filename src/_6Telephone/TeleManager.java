@@ -61,6 +61,7 @@ class Manager {
                     for (Contact c : cl) {
                         System.out.println("Name: " + c.name + " \tNumber: " + c.number);
                     }
+                    break;
                 case 4:
                     System.out.println("Exiting...");
                     sc.close();

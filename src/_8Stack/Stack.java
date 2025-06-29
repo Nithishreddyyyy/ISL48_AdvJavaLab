@@ -2,7 +2,6 @@ package _8Stack;
 import java.util.*;
 public class Stack<T> {
     ArrayList<T> elements;
-
     public Stack(){
         elements = new ArrayList<>();
     }
