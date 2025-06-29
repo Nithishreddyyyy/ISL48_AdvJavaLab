@@ -149,7 +149,7 @@ public class Representative implements ActionListener {
             displayArea.setText("");
             stmt = con.createStatement();
             String query = "SELECT * FROM Rep WHERE RepNo IN " +
-                    "(SELECT RepNo FROM Cust WHERE Credit_Limit > 15000)";
+                    "(SELECT RepNo FROM Cust WHERE cred > 15000)";
             rs = stmt.executeQuery(query);
 
             boolean found = false;
@@ -158,7 +158,7 @@ public class Representative implements ActionListener {
                 displayArea.append("Rep No: " + rs.getInt("RepNo") + "\n");
                 displayArea.append("Rep Name: " + rs.getString("RepName") + "\n");
                 displayArea.append("State: " + rs.getString("State") + "\n");
-                displayArea.append("Commission: " + rs.getDouble("Comission") + "\n");
+                displayArea.append("Commission: " + rs.getDouble("comm") + "\n");
                 displayArea.append("Rate: " + rs.getDouble("Rate") + "\n");
                 displayArea.append("--------------------------------------\n");
             }
