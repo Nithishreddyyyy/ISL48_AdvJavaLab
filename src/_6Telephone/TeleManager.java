@@ -36,7 +36,7 @@ class Manager {
                     }
 
                     if (mc.size() >= 5) {
-                        MissedCall removed = mc.remove(0);
+                        MissedCall removed = mc.removeFirst();
                         System.out.println("Removed oldest missed call: " + removed);
                     }
                     mc.add(new MissedCall(LocalTime.now(), name, miss_ca));
